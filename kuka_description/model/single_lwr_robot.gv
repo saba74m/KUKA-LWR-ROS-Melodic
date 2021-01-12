@@ -1,0 +1,59 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"box" [label="box"];
+"KUKA_base_link" [label="KUKA_base_link"];
+"KUKA_1_link" [label="KUKA_1_link"];
+"KUKA_2_link" [label="KUKA_2_link"];
+"KUKA_3_link" [label="KUKA_3_link"];
+"KUKA_4_link" [label="KUKA_4_link"];
+"KUKA_5_link" [label="KUKA_5_link"];
+"KUKA_6_link" [label="KUKA_6_link"];
+"KUKA_7_link" [label="KUKA_7_link"];
+"KUKA_8_link" [label="KUKA_8_link"];
+"KUKA_8_link_dummy" [label="KUKA_8_link_dummy"];
+"KUKA_7_link_dummy" [label="KUKA_7_link_dummy"];
+"KUKA_6_link_dummy" [label="KUKA_6_link_dummy"];
+"KUKA_5_link_dummy" [label="KUKA_5_link_dummy"];
+"KUKA_4_link_dummy" [label="KUKA_4_link_dummy"];
+"KUKA_3_link_dummy" [label="KUKA_3_link_dummy"];
+"KUKA_2_link_dummy" [label="KUKA_2_link_dummy"];
+"KUKA_1_link_dummy" [label="KUKA_1_link_dummy"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "world_to_box=" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"world_to_box=" -> "box"
+"box" -> "box_KUKA_base_joint" [label="xyz: 0 0 1 \nrpy: 0 -0 0"]
+"box_KUKA_base_joint" -> "KUKA_base_link"
+"KUKA_base_link" -> "KUKA_a1_joint" [label="xyz: 0 0 0.11 \nrpy: 0 -0 0"]
+"KUKA_a1_joint" -> "KUKA_1_link"
+"KUKA_1_link" -> "KUKA_a2_joint" [label="xyz: 0 0 0.2005 \nrpy: 0 -0 0"]
+"KUKA_a2_joint" -> "KUKA_2_link"
+"KUKA_2_link" -> "KUKA_e1_joint" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"KUKA_e1_joint" -> "KUKA_3_link"
+"KUKA_3_link" -> "KUKA_a3_joint" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"KUKA_a3_joint" -> "KUKA_4_link"
+"KUKA_4_link" -> "KUKA_a4_joint" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"KUKA_a4_joint" -> "KUKA_5_link"
+"KUKA_5_link" -> "KUKA_a5_joint" [label="xyz: 0 0 0.19 \nrpy: 0 -0 0"]
+"KUKA_a5_joint" -> "KUKA_6_link"
+"KUKA_6_link" -> "KUKA_a6_joint" [label="xyz: 0 0 0.078 \nrpy: 0 -0 0"]
+"KUKA_a6_joint" -> "KUKA_7_link"
+"KUKA_7_link" -> "KUKA_a7_joint" [label="xyz: 0 0 -0.014 \nrpy: 0 -0 0"]
+"KUKA_a7_joint" -> "KUKA_8_link"
+"KUKA_7_link" -> "KUKA_a7_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a7_joint_stiffness" -> "KUKA_8_link_dummy"
+"KUKA_6_link" -> "KUKA_a6_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a6_joint_stiffness" -> "KUKA_7_link_dummy"
+"KUKA_5_link" -> "KUKA_a5_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a5_joint_stiffness" -> "KUKA_6_link_dummy"
+"KUKA_4_link" -> "KUKA_a4_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a4_joint_stiffness" -> "KUKA_5_link_dummy"
+"KUKA_3_link" -> "KUKA_a3_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a3_joint_stiffness" -> "KUKA_4_link_dummy"
+"KUKA_2_link" -> "KUKA_e1_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_e1_joint_stiffness" -> "KUKA_3_link_dummy"
+"KUKA_1_link" -> "KUKA_a2_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a2_joint_stiffness" -> "KUKA_2_link_dummy"
+"KUKA_base_link" -> "KUKA_a1_joint_stiffness" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"KUKA_a1_joint_stiffness" -> "KUKA_1_link_dummy"
+}

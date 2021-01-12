@@ -1,0 +1,14 @@
+<package format="2">
+  <name>kuka_description</name>
+  <version>1.0.0</version>
+  <description>KUKA LWR 4+ Robot Description</description>
+
+  <maintainer email="saba.mansourfar@mail.polimi.it">Saba Mansourfar</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

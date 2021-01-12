@@ -1,0 +1,52 @@
+<!--  Author: Saba Mansourfar 
+  University: Politecnico Di Milano
+   Labratory: NearLAB
+       Robot: Kuka LWR 4+
+
+**Important Notice: 
+USE: 'roslaunch kuka_description urdf_visualize.launch' -->
+
+<launch>
+  <!-- Define some arguments to be used in the script-->
+   <!-- Loading the robot model -->
+   <arg name="model" default="$(find kuka_description)/model/kuka.urdf.xacro"/>
+  
+   <!-- If set to "true" it will send Fake Joint Values -->
+   <arg name="gui" default="true" />
+  
+   <!-- Saved location of the rviz configuration -->
+   <arg name="rvizconfig" default="$(find kuka_description)/config/urdf.rviz" />
+
+   <!-- Gazebo -->
+   <!-- the default is the simulator -->
+	 <arg name="use_lwr_sim" default="true"/>
+   
+ <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+ <!-- send joint values -->
+  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+ 
+ <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+ 
+ <!-- Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+ <!-- robot simulation uses the full robot description -->
+	<group if="$(arg use_lwr_sim)">
+		<!-- spawn the robot in gazebo -->
+		<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model $(arg model)" output="screen" />
+
+		<!-- enable/disable gui at will, the rviz listens to the simulation -->
+		<include file="$(find gazebo_ros)/launch/empty_world.launch">
+			<arg name="world_name" value="worlds/.world"/>
+			<arg name="paused" value="false"/>
+			<arg name="use_sim_time" value="true"/>
+			<arg name="gui" value="true"/>
+			<arg name="headless" value="false"/>
+			<arg name="debug" value="false"/>
+
+		</include>
+	</group>
+</launch>
