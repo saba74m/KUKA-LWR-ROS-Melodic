@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kuka_description
+    relative_path: model/kuka.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/single_lwr_robot.srdf
+  CONFIG:
+    author_name: Saba Mansourfar
+    author_email: saba.mansourfar@mail.polimi.it
+    generated_timestamp: 1610493268
