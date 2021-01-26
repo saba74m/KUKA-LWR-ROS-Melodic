@@ -1,0 +1,11 @@
+<launch>
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find kuka_pose_following)/config/logger.conf"/>
+  <node pkg="kuka_pose_following" type="test_traject" name="test_traject"
+        output="screen">
+    <rosparam>
+      rate: 100
+    </rosparam>
+    <remap from="pose" to="pose_following/pose" />
+  </node>
+</launch>
