@@ -18,4 +18,4 @@ controller_list:
       - KUKA_a7_joint
 initial:  # Define initial robot poses.
   - group: kuka_full
-    pose: kuka_home
+    pose: kuka_bend

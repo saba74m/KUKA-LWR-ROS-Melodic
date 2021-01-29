@@ -1,4 +1,0 @@
-float32 max_vel_fact
-float32 max_acc_fact
----
-int32 reply
