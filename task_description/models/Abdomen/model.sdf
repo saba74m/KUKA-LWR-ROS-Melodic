@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+
+<model name="buzzwire">
+ <static>true</static>
+  <!-- Give the base link a unique name -->
+  <link name="buzzwire_link">
+    <!-- offset  -->
+    <pose>0 0 0 0 0 0</pose>
+
+    <collision name="buzz_collision">
+     <pose>0 0 0 0 0 0</pose>
+     <geometry>
+       <mesh>
+            <scale>0.2 0.2 0.2</scale>
+            <uri>model://BuzzWire/meshes/model.dae</uri>
+       </mesh>
+      </geometry>
+    </collision>
+
+    <!-- The visual is mostly a copy of the collision -->
+    <visual name="buzz_visual">
+     <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+            <scale>0.2 0.2 0.2</scale>
+            <uri>model://BuzzWire/meshes/model.dae</uri>
+        </mesh>
+      </geometry>
+    </visual>
+  </link>
+</model>
+
+</sdf>
