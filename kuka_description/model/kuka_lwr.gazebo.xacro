@@ -3,6 +3,18 @@
 
 	<xacro:macro name="kuka_lwr_gazebo" params="name">
 
+		<gazebo>
+			<plugin name="KUKA_lwr_hw_sim" filename="liblwr_hw_gazebo_plugin.so">
+				<robotNamespace>KUKA</robotNamespace>
+			</plugin>
+		</gazebo>
+
+		<gazebo>
+		    <plugin name="KUKA_gazebo_ros_control" filename="libgazebo_ros_control.so">
+			    <robotNamespace>KUKA</robotNamespace>
+			</plugin>
+		</gazebo>
+
 		<gazebo reference="${name}_base_link">
 			<gravity>true</gravity>
 			<material>Gazebo/Orange</material>

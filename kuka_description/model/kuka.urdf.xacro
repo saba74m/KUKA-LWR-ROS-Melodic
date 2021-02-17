@@ -45,16 +45,4 @@
 		<origin xyz="0 0 1" rpy="0 0 0"/>
 	</xacro:kuka_lwr>
 
-			<gazebo>
-			<plugin name="KUKA_lwr_hw_sim" filename="liblwr_hw_gazebo_plugin.so">
-				<robotNamespace></robotNamespace>
-			</plugin>
-		</gazebo>
-
-		<gazebo>
-		    <plugin name="KUKA_gazebo_ros_control" filename="libgazebo_ros_control.so">
-			    <robotNamespace></robotNamespace>
-			</plugin>
-		</gazebo>
-
 </robot>
