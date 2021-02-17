@@ -121,7 +121,7 @@ planner_configs:
     dense_delta_fraction: 0.001  # delta fraction for interface detection. default: 0.001
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
 kuka_full:
-  default_planner_config: RRTConnect
+  default_planner_config: SBL
   planner_configs:
     - SBL
     - EST
@@ -146,57 +146,5 @@ kuka_full:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-kuka_wrist:
-  default_planner_config: RRTConnect
-  planner_configs:
-    - SBL
-    - EST
-    - LBKPIECE
-    - BKPIECE
-    - KPIECE
-    - RRT
-    - RRTConnect
-    - RRTstar
-    - TRRT
-    - PRM
-    - PRMstar
-    - FMT
-    - BFMT
-    - PDST
-    - STRIDE
-    - BiTRRT
-    - LBTRRT
-    - BiEST
-    - ProjEST
-    - LazyPRM
-    - LazyPRMstar
-    - SPARS
-    - SPARStwo
-  projection_evaluator: joints(KUKA_a5_joint,KUKA_a6_joint)
+  projection_evaluator: joints(KUKA_a1_joint,KUKA_a2_joint)
   longest_valid_segment_fraction: 0.005
-kuka_ee:
-  default_planner_config: RRT
-  planner_configs:
-    - SBL
-    - EST
-    - LBKPIECE
-    - BKPIECE
-    - KPIECE
-    - RRT
-    - RRTConnect
-    - RRTstar
-    - TRRT
-    - PRM
-    - PRMstar
-    - FMT
-    - BFMT
-    - PDST
-    - STRIDE
-    - BiTRRT
-    - LBTRRT
-    - BiEST
-    - ProjEST
-    - LazyPRM
-    - LazyPRMstar
-    - SPARS
-    - SPARStwo

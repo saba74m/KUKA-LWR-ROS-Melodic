@@ -35,17 +35,4 @@ controller_list:
       - KUKA_a5_joint
       - KUKA_a6_joint
       - KUKA_a7_joint
-  - name: kuka_wrist_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      - KUKA_a5_joint
-      - KUKA_a6_joint
-      - KUKA_a7_joint
-  - name: kuka_ee_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      []
+      - KUKA_a8_joint

@@ -2,8 +2,8 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-	<xacro:property name="Interface10" value="PositionJointInterface"/>
-	<xacro:property name="Interface30" value="EffortJointInterface"/>
+	<xacro:property name="Interface10" value="hardware_interface/PositionJointInterface"/>
+	<!-- <xacro:property name="Interface30" value="hardware_interface/EffortJointInterface"/> -->
 
 	<xacro:macro name="kuka_lwr_transmission" params="name">
 
@@ -11,7 +11,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a1_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
-				<hardwareInterface>${Interface30}</hardwareInterface>
+			    <!--
+			    <hardwareInterface>${Interface30}</hardwareInterface>
+			    -->	
 			</joint>
 			<actuator name="${name}_a1_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -22,7 +24,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a2_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a2_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -33,7 +37,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a3_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a3_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -44,7 +50,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a4_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a4_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -55,7 +63,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a5_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a5_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -66,7 +76,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a6_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a6_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -77,7 +89,9 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a7_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a7_motor">
 				<mechanicalReduction>1</mechanicalReduction>
@@ -88,13 +102,87 @@
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a8_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
+				<!--
 				<hardwareInterface>${Interface30}</hardwareInterface>
+				-->
 			</joint>
 			<actuator name="${name}_a8_motor">
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 		</transmission>
-		
+
+		<!-- Suggested by MoveIt-->
+		    <transmission name="trans_KUKA_a1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a1_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a1_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_KUKA_a2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a2_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a2_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_KUKA_a3_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a3_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a3_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_KUKA_a4_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a4_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a4_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_KUKA_a5_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a5_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a5_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_KUKA_a6_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a6_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a6_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_KUKA_a7_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="KUKA_a7_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="KUKA_a7_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
 	</xacro:macro>
 
 </robot>

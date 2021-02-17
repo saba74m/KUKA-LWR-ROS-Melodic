@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="single_lwr_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="KUKA">
 
 	<!-- Include all models -->
 	<xacro:include filename="$(find kuka_description)/model/kuka_lwr.urdf.xacro"/>
@@ -8,7 +8,7 @@
 	<!-- Attaching My Robot To the WORLD by introducing a dummy link-->
 	<link name="world" />
 
-    <joint name="world_to_box=" type="fixed">
+    <joint name="world_to_box" type="fixed">
 	  <parent link="world"/>
       <child link="box"/>
     </joint>
@@ -37,12 +37,24 @@
 	</link>
 
 	<gazebo reference="box">
-		<static>true</static>>
+		<static>true</static>
 	</gazebo>
 
 	<!-- using the models -->
 	<xacro:kuka_lwr parent="box" name="KUKA">
 		<origin xyz="0 0 1" rpy="0 0 0"/>
 	</xacro:kuka_lwr>
+
+			<gazebo>
+			<plugin name="KUKA_lwr_hw_sim" filename="liblwr_hw_gazebo_plugin.so">
+				<robotNamespace></robotNamespace>
+			</plugin>
+		</gazebo>
+
+		<gazebo>
+		    <plugin name="KUKA_gazebo_ros_control" filename="libgazebo_ros_control.so">
+			    <robotNamespace></robotNamespace>
+			</plugin>
+		</gazebo>
 
 </robot>

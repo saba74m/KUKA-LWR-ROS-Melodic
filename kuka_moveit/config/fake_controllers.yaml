@@ -8,14 +8,6 @@ controller_list:
       - KUKA_a5_joint
       - KUKA_a6_joint
       - KUKA_a7_joint
-  - name: fake_kuka_wrist_controller
-    joints:
-      - KUKA_a5_joint
-      - KUKA_a6_joint
-      - KUKA_a7_joint
-  - name: fake_kuka_ee_controller
-    joints:
-      - KUKA_a7_joint
 initial:  # Define initial robot poses.
   - group: kuka_full
     pose: kuka_home
