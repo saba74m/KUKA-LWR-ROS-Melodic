@@ -1,3 +1,6 @@
+Before using this file make sure you have already installed the prerequested packages:
+MoveIt, joint_state_publisher, robot_state_publisher, ros_control, ... 
+
 This file consist of many packages:
 
 1. Kuka LWR 4+ Description Package:
