@@ -76,5 +76,6 @@
     <disable_collisions link1="KUKA_6_link" link2="KUKA_8_link" reason="Default" />
     <disable_collisions link1="KUKA_6_link" link2="KUKA_base_link" reason="Never" />
     <disable_collisions link1="KUKA_7_link" link2="KUKA_8_link" reason="Adjacent" />
+    <disable_collisions link1="KUKA_7_link" link2="KUKA_base_link" reason="Never" />
     <disable_collisions link1="KUKA_base_link" link2="box" reason="Adjacent" />
 </robot>

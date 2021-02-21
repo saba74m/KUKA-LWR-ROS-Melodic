@@ -1,6 +1,5 @@
 <launch>
-    <arg name="config" default="true"/>
-    <arg name="rviz_config" default="$(find kuka_moveit)/launch/moveit.rviz" />
+    <arg name="rviz_config" default="true"/>
     
     
     <!-- Add planning context launch file -->
@@ -14,7 +13,6 @@
     </include>
     
     <include file="$(find kuka_moveit)/launch/moveit_rviz.launch">
-        <arg name="config" value="$(arg config)" />
         <arg name="rviz_config" value="$(arg rviz_config)" />
     </include>
     

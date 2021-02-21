@@ -9,10 +9,10 @@
   <arg name="controller_manager_name" default="simple_controller_manager" />
   <param name="controller_manager_name" value="$(arg controller_manager_name)"/>
 
-  <!-- flag indicating whther the controller manager should be used or not -->
+  <!-- flag indicating whether the controller manager should be used or not -->
   <arg name="use_controller_manager" default="true"/>
   <param name="use_controller_manager" value="$(arg use_controller_manager)"/>
   
   <!-- loads ros_controllers to the param server -->
-  <rosparam file="$(find kuka_moveit)/config/controllers.yaml"/>
+  <rosparam file="$(find kuka_moveit)/config/ros_controllers.yaml"/>
 </launch>

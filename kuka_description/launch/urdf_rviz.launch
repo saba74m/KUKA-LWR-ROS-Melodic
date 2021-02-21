@@ -4,7 +4,7 @@
        Robot: Kuka LWR 4+
 
 **Important Notice: 
-USE: 'roslaunch kuka_description urdf_visualize.launch' -->
+USE: 'roslaunch kuka_description urdf_rviz.launch' -->
 
 <launch>
   <!-- Define some arguments to be used in the script-->
@@ -12,7 +12,7 @@ USE: 'roslaunch kuka_description urdf_visualize.launch' -->
    <arg name="model" default="$(find kuka_description)/model/kuka.urdf.xacro"/>
   
    <!-- If set to "true" it will send Fake Joint Values -->
-   <arg name="gui" default="true" />
+   <arg name="gui" default="false" />
   
    <!-- Saved location of the rviz configuration -->
    <arg name="rvizconfig" default="$(find kuka_description)/config/urdf.rviz" />
@@ -35,18 +35,18 @@ USE: 'roslaunch kuka_description urdf_visualize.launch' -->
 
  <!-- robot simulation uses the full robot description -->
 	<group if="$(arg use_lwr_sim)">
-		<!-- spawn the robot in gazebo -->
-		<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model $(arg model)" output="screen" />
-
+		
 		<!-- enable/disable gui at will, the rviz listens to the simulation -->
 		<include file="$(find gazebo_ros)/launch/empty_world.launch">
-			<arg name="world_name" value="worlds/.world"/>
+			<arg name="world_name" value="(find kuka_description)/config/kuka.world"/>
 			<arg name="paused" value="false"/>
 			<arg name="use_sim_time" value="true"/>
 			<arg name="gui" value="true"/>
 			<arg name="headless" value="false"/>
 			<arg name="debug" value="false"/>
-
 		</include>
+
+    <!-- spawn the robot in gazebo -->
+		<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model $(arg model)" output="screen" />
 	</group>
 </launch>

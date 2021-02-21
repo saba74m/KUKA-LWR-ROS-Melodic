@@ -21,9 +21,9 @@ hardware_interface:
 # Creates the /joint_states topic necessary in ROS
 joint_state_controller:
   type: joint_state_controller/JointStateController
-  publish_rate: 50
+  publish_rate: 100
 controller_list:
-  - name: kuka_full_controller
+  - name: /KUKA/joint_trajectory_controller
     action_ns: follow_joint_trajectory
     default: True
     type: FollowJointTrajectory
