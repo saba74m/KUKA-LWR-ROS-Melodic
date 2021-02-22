@@ -100,18 +100,15 @@
 			</actuator>
 		</transmission>
 
-		<transmission name="${name}_a8_trans">
+		<!--<transmission name="${name}_a8_trans">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}_a8_joint">
 				<hardwareInterface>${Interface10}</hardwareInterface>
-				<!--
-				<hardwareInterface>${Interface30}</hardwareInterface>
-				-->
 			</joint>
 			<actuator name="${name}_a8_motor">
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
-		</transmission>
+		</transmission>-->
 	</xacro:macro>
 
 </robot>
