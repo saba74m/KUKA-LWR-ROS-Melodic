@@ -1,0 +1,105 @@
+<!--  Author: Saba Mansourfar 
+  University: Politecnico Di Milano
+   Labratory: NearLAB
+       Robot: Kuka LWR 4+
+
+**Important Notice:
+This file will put all of these together
+USE: 'roslaunch kuka_robot kuka.launch' -->
+
+<!-- LAUNCH INTERFACE -->
+<launch>	
+	<!-- Define some arguments to be used in the script-->
+  <!-- Loading the robot model -->
+   <arg name="model" default="$(find kuka_description)/model/kuka.urdf.xacro"/>
+
+	<!-- in case you have different robot configurations -->
+	<arg name="robot_name" default="KUKA"/>
+
+	<!-- the default is the simulator -->
+	<arg name="use_lwr_sim" default="true"/>
+	
+	<!-- set the parameters -->
+	<!-- arg name="t1_limits" default="false"/-->
+	<arg name="controllers" default="joint_state_controller joint_trajectory_controller"/>
+	<arg name="stopped_controllers" default="twist_controller one_task_inverse_kinematics"/>
+
+	<!-- in case you want to load moveit from here, it might be hard with the real HW though -->
+	<arg name="load_moveit" default="true"/>
+
+	<!-- set some ros tools -->
+	<arg name="use_rviz" default="false"/>
+	<arg name="gui" default="false" />
+
+	<!-- Load the URDF into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(arg model)'" />
+
+	<!-- joint and robot state publishers of the full robot description -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list">[/KUKA/joint_states]</rosparam>
+	</node>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+	
+	<group if="$(arg use_rviz)">
+		<node name="lwr_rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find kuka_description)/config/urdf_rviz.rviz" output="screen"/>
+	</group>
+
+	<!-- robot simulation uses the full robot description -->
+	<group if="$(arg use_lwr_sim)">
+		
+		<!-- enable/disable gui at will, the rviz listens to the simulation -->
+		<include file="$(find gazebo_ros)/launch/empty_world.launch">
+			<arg name="world_name" value="$(find task_description)/world/NearLAB.world"/>
+			<arg name="paused" value="false"/>
+			<arg name="use_sim_time" value="true"/>
+			<arg name="gui" value="true"/>
+			<arg name="headless" value="false"/>
+			<arg name="debug" value="false"/>
+
+		</include>
+
+		<!-- spawn the robot in gazebo -->
+		<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg model)"  respawn="false" output="screen" />
+
+	</group>
+
+	<!-- load moveit configuration -->
+	<group if="$(arg load_moveit)">
+		<include file="$(find kuka_moveit)/launch/move_group.launch">
+			<arg name="allow_trajectory_execution" value="true"/>  
+			<arg name="fake_execution" value="false"/>
+			<arg name="info" value="true"/>
+			<arg name="debug" value="false"/>
+		</include>
+
+		<!-- run Rviz and load the default config to see the state of the move_group node -->
+		<include file="$(find kuka_moveit)/launch/moveit_rviz.launch">
+			<arg name="rviz_config" value="true"/>
+			<arg name="debug" value="false"/>
+		</include>
+	</group>
+	
+	<!-- Load updated joint limits (override information from single_lwr_moveit) to respect T1 mode limits -->
+	<!--group if="$(arg t1_limits)" ns="robot_description_planning">
+		<rosparam command="load" file="$(find single_lwr_robot)/config/t1_joint_limits.yaml"/>
+	</group-->
+
+	<!-- load robotHW configurations to rosparam server -->
+	<!--rosparam command="load" file="$(find single_lwr_robot)/config/hw_interface.yaml"/-->
+
+	<!-- load all controller configurations to rosparam server -->
+	<rosparam file="$(find kuka_control)/config/gazebo_ros_control.yaml" command="load"/>
+	<rosparam file="$(find kuka_control)/config/moveit_controller.yaml" command="load"/>
+
+
+	<!-- controllers -->
+	<group ns="KUKA">
+
+		<!-- spawn only desired controllers in current namespace -->
+		<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"  args="joint_state_controller $(arg controllers)  "/>
+
+		<node name="controller_stopper" pkg="controller_manager" type="spawner" args="--stopped $(arg stopped_controllers)  " />
+
+	</group>
+
+</launch>

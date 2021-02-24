@@ -7,9 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Links1
         - /TF1
-        - /TF1/Status1
       Splitter Ratio: 0.5941176414489746
     Tree Height: 579
   - Class: rviz/Selection
@@ -65,89 +63,51 @@ Visualization Manager:
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
+        KUKA_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_5_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_6_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_7_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        KUKA_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         Link Tree Style: Links in Alphabetic Order
         box:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        lwr_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_1_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_2_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_3_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_4_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_4_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_5_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_5_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_6_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_6_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_7_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_7_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_8_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lwr_8_link_dummy:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        lwr_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -159,41 +119,23 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        KUKA_1_link:
+          Value: true
+        KUKA_2_link:
+          Value: true
+        KUKA_3_link:
+          Value: true
+        KUKA_4_link:
+          Value: true
+        KUKA_5_link:
+          Value: true
+        KUKA_6_link:
+          Value: true
+        KUKA_7_link:
+          Value: true
+        KUKA_base_link:
+          Value: true
         box:
-          Value: true
-        lwr_1_link:
-          Value: true
-        lwr_1_link_dummy:
-          Value: true
-        lwr_2_link:
-          Value: true
-        lwr_2_link_dummy:
-          Value: true
-        lwr_3_link:
-          Value: true
-        lwr_3_link_dummy:
-          Value: true
-        lwr_4_link:
-          Value: true
-        lwr_4_link_dummy:
-          Value: true
-        lwr_5_link:
-          Value: true
-        lwr_5_link_dummy:
-          Value: true
-        lwr_6_link:
-          Value: true
-        lwr_6_link_dummy:
-          Value: true
-        lwr_7_link:
-          Value: true
-        lwr_7_link_dummy:
-          Value: true
-        lwr_8_link:
-          Value: true
-        lwr_8_link_dummy:
-          Value: true
-        lwr_base_link:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -202,32 +144,15 @@ Visualization Manager:
       Show Names: true
       Tree:
         box:
-          lwr_base_link:
-            lwr_1_link:
-              lwr_2_link:
-                lwr_3_link:
-                  lwr_4_link:
-                    lwr_5_link:
-                      lwr_6_link:
-                        lwr_7_link:
-                          lwr_8_link:
-                            {}
-                          lwr_8_link_dummy:
-                            {}
-                        lwr_7_link_dummy:
+          KUKA_base_link:
+            KUKA_1_link:
+              KUKA_2_link:
+                KUKA_3_link:
+                  KUKA_4_link:
+                    KUKA_5_link:
+                      KUKA_6_link:
+                        KUKA_7_link:
                           {}
-                      lwr_6_link_dummy:
-                        {}
-                    lwr_5_link_dummy:
-                      {}
-                  lwr_4_link_dummy:
-                    {}
-                lwr_3_link_dummy:
-                  {}
-              lwr_2_link_dummy:
-                {}
-            lwr_1_link_dummy:
-              {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -258,25 +183,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.938253402709961
+      Distance: 5.63376522064209
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.8742693662643433
+        Y: 0.6485992670059204
+        Z: 1.729007363319397
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1697967052459717
+      Pitch: -0.25020265579223633
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.816755771636963
+      Yaw: 5.916758060455322
     Saved: ~
 Window Geometry:
   Displays:

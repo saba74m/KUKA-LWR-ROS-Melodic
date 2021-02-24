@@ -5,14 +5,6 @@
   <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
   <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
 
-  <!-- If the controller manager is running (the generic one, not the MoveIt! one)-->
-  <arg name="controller_manager_name" default="simple_controller_manager" />
-  <param name="controller_manager_name" value="$(arg controller_manager_name)"/>
-
-  <!-- flag indicating whether the controller manager should be used or not -->
-  <arg name="use_controller_manager" default="true"/>
-  <param name="use_controller_manager" value="$(arg use_controller_manager)"/>
-  
   <!-- loads ros_controllers to the param server -->
   <rosparam file="$(find kuka_moveit)/config/ros_controllers.yaml"/>
 </launch>

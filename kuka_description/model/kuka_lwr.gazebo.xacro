@@ -2,12 +2,13 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	<xacro:macro name="kuka_lwr_gazebo" params="name">
-
+<!--
 		<gazebo>
 			<plugin name="KUKA_lwr_hw_sim" filename="liblwr_hw_gazebo_plugin.so">
 				<robotNamespace>/KUKA</robotNamespace>
 			</plugin>
-		</gazebo>
+        </gazebo>
+-->
 
 		<gazebo>
 		    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

@@ -15,11 +15,11 @@ namespace lwr_hw
     // JOINT NAMES ARE TAKEN FROM URDF NAME CONVENTION
     joint_names_.push_back( robot_namespace_ + std::string("_a1_joint") );
     joint_names_.push_back( robot_namespace_ + std::string("_a2_joint") );
+    joint_names_.push_back( robot_namespace_ + std::string("_e1_joint") );
     joint_names_.push_back( robot_namespace_ + std::string("_a3_joint") );
     joint_names_.push_back( robot_namespace_ + std::string("_a4_joint") );
     joint_names_.push_back( robot_namespace_ + std::string("_a5_joint") );
     joint_names_.push_back( robot_namespace_ + std::string("_a6_joint") );
-    joint_names_.push_back( robot_namespace_ + std::string("_a7_joint") );
     cart_12_names_.push_back( robot_namespace_ + std::string("_rot_xx") );
     cart_12_names_.push_back( robot_namespace_ + std::string("_rot_yx") );
     cart_12_names_.push_back( robot_namespace_ + std::string("_rot_zx") );

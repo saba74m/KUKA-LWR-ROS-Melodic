@@ -13,7 +13,8 @@
 	<xacro:property name="base_mass" value="2.0"/>
 	<xacro:property name="link_mass" value="2.35"/>
     <xacro:property name="wrist_mass" value="1.1"/>
-    <xacro:property name="tip_mass" value="0.25"/>
+    <xacro:property name="tip_mass" value="2.60"/>
+    <!--xacro:property name="tip_mass" value="0.25"/-->
 	<xacro:property name="velocity_scale" value="1"/>
 	<xacro:property name="effort_scale" value="1"/>
 
@@ -266,6 +267,18 @@
 			<origin xyz="0 0 0.0025" rpy="0 0 0"/>
 			<geometry>
 				<cylinder radius="0.043" length="0.035"/>
+			</geometry>
+			</collision>
+			<collision>
+			<origin xyz="0 0 0.19" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.01" length="0.15"/>
+			</geometry>
+			</collision>
+			<collision>
+			<origin xyz="0 0 0.07" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.045" length="0.105"/>
 			</geometry>
 			</collision>
 		</link>

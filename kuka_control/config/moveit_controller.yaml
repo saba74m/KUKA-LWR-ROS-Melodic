@@ -1,0 +1,197 @@
+# Author: Saba Mansourfar 
+# University: Politecnico Di Milano
+# Labratory: NearLAB
+#     Robot: Kuka LWR 4+
+
+#  **Important Notice**
+#  This will load default Kuka controllers + some specific controllers
+# ----------- MOVEIT SPECIFIC CONTTROLLERS -------------------
+# Simulation settings for using moveit_sim_controllers
+moveit_sim_hw_interface:
+  joint_model_group: full_lwr
+  joint_model_group_pose: kuka_lwr_home
+# Settings for ros_control_boilerplate control loop
+generic_hw_control_loop:
+  loop_hz: 300
+  cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+hardware_interface:
+  joints:
+    - KUKA_a1_joint
+    - KUKA_a2_joint
+    - KUKA_a3_joint
+    - KUKA_a4_joint
+    - KUKA_a5_joint
+    - KUKA_a6_joint
+    - KUKA_a7_joint
+  sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+# ----------- KUKA ------------- #
+KUKA:
+  # CONTROLLERS USED IN THE EXAMPLE
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  # THIS CONFIGURATION IS ACTUALLY SENDING TAU = K*Q
+  joint_trajectory_controller:
+    type: position_controllers/JointTrajectoryController
+    joints: 
+      - KUKA_a1_joint
+      - KUKA_a2_joint
+      - KUKA_a3_joint
+      - KUKA_a4_joint
+      - KUKA_a5_joint
+      - KUKA_a6_joint
+      - KUKA_a7_joint
+
+  # Twist Controller
+  twist_controller:
+    type: lwr_controllers/TwistController
+    root_name: lwr_base_link
+    tip_name: lwr_7_link
+
+
+## OTHER CUSTOM CONTROLLERS LEFT HERE AS EXAMPLES
+  arm_state_controller: 
+    type: arm_state_controller/ArmStateController
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    publish_rate: 30
+
+  gravity_compensation_controller:
+    type: KUKA_controllers/GravityCompensation
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+
+  #   Joint Impedance Controllers
+  joint_impedance_controller:
+    type: KUKA_controllers/JointImpedanceController
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    stiffness_gains: 300
+    damping_gains: .7
+
+  # Inverse Dynamics Controllers
+  inverse_dynamics_controller:
+    type: KUKA_controllers/InverseDynamicsController
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+
+  # Computed Torque Controllers
+  computed_torque_controller:
+    type: KUKA_controllers/ComputedTorqueController
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+
+  # One Task Inverse Kinematics
+  one_task_inverse_kinematics:
+    type: KUKA_controllers/OneTaskInverseKinematics
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+
+  # Cartesian Impedance
+  cartesian_impedance_controller:
+    type: KUKA_controllers/CartesianImpedanceController
+    robot_name: KUKA
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    publish_cartesian_pose: false
+
+  # Multi Task Priority Inverse Kinematics
+  multi_task_priority_inverse_kinematics:
+    type: KUKA_controllers/MultiTaskPriorityInverseKinematics
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    pid_KUKA_a1_joint: {p: 250,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a2_joint: {p: 220,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a3_joint: {p: 150,  i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a4_joint: {p: 150,  i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}
+
+
+  # One Task Inverse Dynamics JL
+  one_task_inverse_dynamics_JL:
+    type: KUKA_controllers/OneTaskInverseDynamicsJL
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    pid_KUKA_a1_joint: {p: 250,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a2_joint: {p: 220,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a3_joint: {p: 150,  i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a4_joint: {p: 150,  i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}
+
+
+  # Multi Task Priority Inverse Dynamics
+  multi_task_priority_inverse_dynamics:
+    type: KUKA_controllers/MultiTaskPriorityInverseDynamics
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    pid_KUKA_a1_joint: {p: 250,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a2_joint: {p: 220,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a3_joint: {p: 150,  i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a4_joint: {p: 150,  i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}
+
+
+  # Minimum Effort Inverse Dynamics
+  minimum_effort_inverse_dynamics:
+    type: KUKA_controllers/MinimumEffortInverseDynamics
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    pid_KUKA_a1_joint: {p: 250,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a2_joint: {p: 220,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a3_joint: {p: 150,  i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a4_joint: {p: 150,  i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}
+
+
+  # Backstepping Controller
+  back_stepping_controller:
+    type: KUKA_controllers/BacksteppingController
+    root_name: KUKA_base_link
+    tip_name: KUKA_7_link
+    pid_KUKA_a1_joint: {p: 250,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a2_joint: {p: 220,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a3_joint: {p: 150,  i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a4_joint: {p: 150,  i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+    pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}
+
+
+  # Dynamic Sliding Mode Controller
+  dynamics_sliding_mode_controller:
+     type: KUKA_controllers/DynamicSlidingModeController
+     root_name: KUKA_base_link
+     tip_name: KUKA_7_link
+     pid_KUKA_a1_joint: {p: 250,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a2_joint: {p: 220,  i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a3_joint: {p: 150,  i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a4_joint: {p: 150,  i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}
+
+
+  # Dynamic Sliding Mode Controller Task Space
+  dynamics_sliding_mode_controller_task_space_controller:
+     type: KUKA_controllers/DynamicSlidingModeControllerTaskSpace
+     root_name: KUKA_base_link
+     tip_name: KUKA_7_link
+     pid_KUKA_a1_joint: {p: 250, i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a2_joint: {p: 220, i: 10, d: 30, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a3_joint: {p: 150, i: 6, d: 20, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a4_joint: {p: 150, i: 5, d: 12, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a5_joint: {p: 90,  i: 5, d: 10, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a6_joint: {p: 40,  i: 5, d: 7, i_clamp_min: -0.3, i_clamp_max: 0.3}
+     pid_KUKA_a7_joint: {p: 15,  i: 2, d: 5, i_clamp_min: -0.3, i_clamp_max: 0.3}

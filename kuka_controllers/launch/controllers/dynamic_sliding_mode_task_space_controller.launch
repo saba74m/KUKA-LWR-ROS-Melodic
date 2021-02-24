@@ -1,8 +1,0 @@
-<launch>
-
-	<include file="$(find kuka_controllers)/launch/load_controller.launch"> 
-		<arg name="controller" value="DynamicSlidingModeControllerTaskSpace" />
-	</include>
-		
-</launch>
-		

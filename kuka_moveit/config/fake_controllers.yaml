@@ -1,5 +1,5 @@
 controller_list:
-  - name: fake_kuka_full_controller
+  - name: fake_full_lwr_controller
     joints:
       - KUKA_a1_joint
       - KUKA_a2_joint
@@ -9,5 +9,5 @@ controller_list:
       - KUKA_a6_joint
       - KUKA_a7_joint
 initial:  # Define initial robot poses.
-  - group: kuka_full
-    pose: kuka_home
+  - group: full_lwr
+    pose: kuka_lwr_home
