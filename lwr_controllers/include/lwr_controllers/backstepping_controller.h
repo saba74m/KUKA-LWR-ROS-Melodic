@@ -13,7 +13,7 @@
 #include <boost/thread/condition.hpp>
 #include <sstream>
 
-namespace lwr_controllers
+namespace KUKA_controllers
 {
     
 	class BacksteppingController: public controller_interface::PIDKinematicChainControllerBase<hardware_interface::EffortJointInterface>
