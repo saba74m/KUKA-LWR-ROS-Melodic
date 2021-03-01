@@ -90,7 +90,7 @@
     </description>
   </class>
 
-  <class name="KUKA_controllers/TwistController" type="KUKA_controllers::TwistController" base_class_type="controller_interface::ControllerBase">
+  <class name="lwr_controllers/TwistController" type="lwr_controllers::TwistController" base_class_type="controller_interface::ControllerBase">
     <description>
       Info...
     </description>

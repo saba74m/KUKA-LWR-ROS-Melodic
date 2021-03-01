@@ -5,7 +5,7 @@
 
 #define DEBUG   1                       // prints out additional info
 
-namespace KUKA_controllers {
+namespace lwr_controllers {
 
   // DEFAULT CONSTRUCTOR
   TwistController::TwistController(){
@@ -220,4 +220,4 @@ namespace KUKA_controllers {
 
 }
 
-PLUGINLIB_EXPORT_CLASS(KUKA_controllers::TwistController, controller_interface::ControllerBase)
+PLUGINLIB_EXPORT_CLASS(lwr_controllers::TwistController, controller_interface::ControllerBase)

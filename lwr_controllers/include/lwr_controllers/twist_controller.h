@@ -9,7 +9,7 @@
 #include "kdl/chaindynparam.hpp"
 
 
-namespace KUKA_controllers {
+namespace lwr_controllers {
 
   class TwistController : public controller_interface::KinematicChainControllerBase<hardware_interface::PositionJointInterface> {
 

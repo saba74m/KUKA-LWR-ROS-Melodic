@@ -61,11 +61,11 @@ namespace controller_interface
         nh_ = n;
 
         // get URDF and name of root and tip from the parameter server
-        std::string robot_description, root_name, tip_name;
+        std::string robot_description1, root_name, tip_name;
 
-        if (!ros::param::search(n.getNamespace(),"robot_description", robot_description))
+        if (!ros::param::search(n.getNamespace(),"robot_description1", robot_description1))
         {
-            ROS_ERROR_STREAM("KinematicChainControllerBase: No robot description (URDF) found on parameter server ("<<n.getNamespace()<<"/robot_description)");
+            ROS_ERROR_STREAM("KinematicChainControllerBase: No robot description (URDF) found on parameter server ("<<n.getNamespace()<<"/robot_description1)");
             return false;
         }
 
@@ -88,25 +88,25 @@ namespace controller_interface
         // Construct an URDF model from the xml string
         std::string xml_string;
 
-        if (n.hasParam(robot_description))
-            n.getParam(robot_description.c_str(), xml_string);
+        if (n.hasParam(robot_description1))
+            n.getParam(robot_description1.c_str(), xml_string);
         else
         {
-            ROS_ERROR("Parameter %s not set, shutting down node...", robot_description.c_str());
+            ROS_ERROR("Parameter %s not set, shutting down node...", robot_description1.c_str());
             n.shutdown();
             return false;
         }
 
         if (xml_string.size() == 0)
         {
-            ROS_ERROR("Unable to load robot model from parameter %s",robot_description.c_str());
+            ROS_ERROR("Unable to load robot model from parameter %s",robot_description1.c_str());
             n.shutdown();
             return false;
         }
 
-        ROS_DEBUG("%s content\n%s", robot_description.c_str(), xml_string.c_str());
+        ROS_DEBUG("%s content\n%s", robot_description1.c_str(), xml_string.c_str());
         
-        // Get urdf model out of robot_description
+        // Get urdf model out of robot_description1
         urdf::Model model;
         if (!model.initString(xml_string))
         {

@@ -33,7 +33,7 @@ namespace lwr_controllers
     void ext_wrench_cb(const geometry_msgs::WrenchStampedConstPtr &wrench_msg);
 
     std::string 
-      robot_description_,
+      robot_description1_,
       root_name_, 
       tip_name_;
     std::vector<std::string> joint_names_;

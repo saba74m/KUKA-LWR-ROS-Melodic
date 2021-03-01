@@ -6,7 +6,7 @@
 #include <utils/pseudo_inversion.h>
 #include <lwr_controllers/backstepping_controller.h>
 
-namespace KUKA_controllers 
+namespace lwr_controllers 
 {
 	BacksteppingController::BacksteppingController() {}
 	BacksteppingController::~BacksteppingController() {}
@@ -228,4 +228,4 @@ namespace KUKA_controllers
 	}
 }
 
-PLUGINLIB_EXPORT_CLASS(KUKA_controllers::BacksteppingController, controller_interface::ControllerBase)
+PLUGINLIB_EXPORT_CLASS(lwr_controllers::BacksteppingController, controller_interface::ControllerBase)

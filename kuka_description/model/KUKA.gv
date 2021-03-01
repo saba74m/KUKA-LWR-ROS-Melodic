@@ -1,0 +1,26 @@
+digraph G {
+node [shape=box];
+"KUKA_base_link" [label="KUKA_base_link"];
+"KUKA_1_link" [label="KUKA_1_link"];
+"KUKA_2_link" [label="KUKA_2_link"];
+"KUKA_3_link" [label="KUKA_3_link"];
+"KUKA_4_link" [label="KUKA_4_link"];
+"KUKA_5_link" [label="KUKA_5_link"];
+"KUKA_6_link" [label="KUKA_6_link"];
+"KUKA_7_link" [label="KUKA_7_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"KUKA_base_link" -> "KUKA_a1_joint" [label="xyz: 0 0 0.11 \nrpy: 0 -0 0"]
+"KUKA_a1_joint" -> "KUKA_1_link"
+"KUKA_1_link" -> "KUKA_a2_joint" [label="xyz: 0 0 0.2005 \nrpy: 0 -0 0"]
+"KUKA_a2_joint" -> "KUKA_2_link"
+"KUKA_2_link" -> "KUKA_a3_joint" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"KUKA_a3_joint" -> "KUKA_3_link"
+"KUKA_3_link" -> "KUKA_a4_joint" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"KUKA_a4_joint" -> "KUKA_4_link"
+"KUKA_4_link" -> "KUKA_a5_joint" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"KUKA_a5_joint" -> "KUKA_5_link"
+"KUKA_5_link" -> "KUKA_a6_joint" [label="xyz: 0 0 0.19 \nrpy: 0 -0 0"]
+"KUKA_a6_joint" -> "KUKA_6_link"
+"KUKA_6_link" -> "KUKA_a7_joint" [label="xyz: 0 0 0.06 \nrpy: 0 -0 0"]
+"KUKA_a7_joint" -> "KUKA_7_link"
+}

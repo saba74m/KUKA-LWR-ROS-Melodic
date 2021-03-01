@@ -12,7 +12,7 @@ namespace lwr_controllers
 {
 
   InverseDynamicsController::InverseDynamicsController()
-    : robot_description_("")
+    : robot_description1_("")
       ,root_name_("")
       ,tip_name_("")
       ,joint_names_()
