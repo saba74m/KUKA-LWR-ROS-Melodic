@@ -9,9 +9,11 @@ USE: 'roslaunch kuka_robot kuka.launch' -->
 
 <!-- LAUNCH INTERFACE -->
 <launch>	
-	<!-- Define some arguments to be used in the script-->
-  <!-- Loading the robot model -->
-   <arg name="model" default="$(find kuka_description)/model/kuka.urdf.xacro"/>
+   <!-- Define some arguments to be used in the script-->
+    <!-- Loading the robot model -->
+    <arg name="model" default="$(find kuka_description)/model/kuka.urdf.xacro"/>
+    <!-- Loading the robot model for controller purpose -->
+    <arg name="model1" default="$(find kuka_description)/model/kuka_only.urdf.xacro"/>
 
 	<!-- in case you have different robot configurations -->
 	<arg name="robot_name" default="KUKA"/>
@@ -21,7 +23,7 @@ USE: 'roslaunch kuka_robot kuka.launch' -->
 	
 	<!-- set the parameters -->
 	<!-- arg name="t1_limits" default="false"/-->
-	<arg name="controllers" default="joint_state_controller joint_trajectory_controller"/>
+	<arg name="controllers" default="joint_trajectory_controller"/>
 	<arg name="stopped_controllers" default="twist_controller one_task_inverse_kinematics"/>
 
 	<!-- in case you want to load moveit from here, it might be hard with the real HW though -->
@@ -34,6 +36,9 @@ USE: 'roslaunch kuka_robot kuka.launch' -->
 	<!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(arg model)'" />
 
+    <!-- Load the URDF into the ROS Parameter Server for controller -->
+    <param name="robot_description1" command="$(find xacro)/xacro --inorder '$(arg model1)'" />
+
 	<!-- joint and robot state publishers of the full robot description -->
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
 		<rosparam param="source_list">[/KUKA/joint_states]</rosparam>
@@ -41,7 +46,7 @@ USE: 'roslaunch kuka_robot kuka.launch' -->
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 	
 	<group if="$(arg use_rviz)">
-		<node name="lwr_rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find kuka_description)/config/urdf_rviz.rviz" output="screen"/>
+		<node name="lwr_rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find kuka_robot)/config/urdf_rviz.rviz" output="screen"/>
 	</group>
 
 	<!-- robot simulation uses the full robot description -->
