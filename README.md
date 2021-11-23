@@ -26,9 +26,6 @@ This can generally work with all kinds of robots
 4. Kuka LWR 4+ controllers
 Add the specific controllers from RosControl package and some specific controllers for KUKA. (Debugging Phase)
 For starting the controller(s):
-roslaunch kuka_description kuka_gazebo.launch
-roslaunch kuka_controllers kuka_control.launch
+...
 
 5. Haptic Device controllers (ToDo)
-
-
