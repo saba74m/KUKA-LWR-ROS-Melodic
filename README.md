@@ -27,9 +27,3 @@ roslaunch kuka_description kuka_gazebo.launch
 roslaunch kuka_controllers kuka_control.launch
 
 5. Haptic Device controllers (ToDo)
-
-Other repositories included:
-
-1. Bag: To include all the recorded bag files from Omni Haptic Device on /omni1_pose topic =>> message type: geometry_msgs/PoseStamped
-
-2. task_description: for now the abdomen model and the wire buzz game added, the later needs to be modified and not complete yet.
