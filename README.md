@@ -1,3 +1,6 @@
+Thanks to the @CentroEPiaggio group (https://github.com/CentroEPiaggio/kuka-lwr) for making this project public, so I can adjust it depending on my system and my controllers
+____________  _________  ___________  _______________________________________________________
+_____________  __________  ___________  _____________________________________________________
 Before using this file make sure you have already installed the prerequested packages:
 MoveIt, joint_state_publisher, robot_state_publisher, ros_control, ... 
 
@@ -15,7 +18,7 @@ To visulize without any error:
 ROS Melodic + UBUNTU 18.04 is advised.
 
 To visulize and start planning, simply run:
-roslaunch kuka_moveit demo.launch
+roslaunch kuka_robot kuka_robot
 
 3. PathFollowing Package 
 This can generally work with all kinds of robots
@@ -27,3 +30,5 @@ roslaunch kuka_description kuka_gazebo.launch
 roslaunch kuka_controllers kuka_control.launch
 
 5. Haptic Device controllers (ToDo)
+
+
